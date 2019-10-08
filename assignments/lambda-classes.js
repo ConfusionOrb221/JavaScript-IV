@@ -32,7 +32,7 @@ class Student extends Person{
         this.favSubjects = attrs.favSubjects;
     }
     listSubjects(){
-        this.favSubjects.array.forEach(i => {
+        this.favSubjects.forEach(i => {
             console.log(i);
         });
     }
@@ -90,6 +90,26 @@ const sam = new Student({
     className: 'WPT11',
     favSubjects: ['HTML, CSS, JS']
 });
+const howard = new ProjectManager({
+    name: 'howard',
+    location: 'Nevada',
+    age: 37,
+    favLanguage: 'JS',
+    speciality: 'Front-end',
+    catchPhrase: 'That meme gets a bloooooooooop / blip',
+    gradClassName: 'CS1',
+    favInstructor: 'Lucas'
+});
+const tim = new ProjectManager({
+    name: 'Tim',
+    location: 'North Dakota',
+    age: 35,
+    favLanguage: 'JS',
+    speciality: 'Front-end',
+    catchPhrase: 'bliiiiiip',
+    gradClassName: 'CS2',
+    favInstructor: 'Todd'
+});
 
 console.log(lucas);
 lucas.speak();
@@ -99,3 +119,18 @@ console.log(todd);
 todd.speak();
 todd.demo('JS');
 todd.grade(sam, 'JS - I');
+console.log(nathan);
+nathan.listSubjects();
+nathan.PRAssignment('ruby');
+nathan.sprintChallenge('ruby - II');
+console.log(sam);
+sam.listSubjects();
+sam.PRAssignment('JS');
+sam.sprintChallenge('Js - II');
+console.log(howard);
+howard.standUp('webpt11');
+howard.debugsCode(nathan, 'Ruby - II');
+console.log(tim);
+tim.standUp('webpt11');
+tim.debugsCode(sam, 'JS - II');
+
