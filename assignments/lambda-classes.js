@@ -22,6 +22,20 @@ class Instructor extends Person{
     grade(object, string){
         console.log(`${object.name} receieves a perfect score on ${string}`);
     }
+    gradeRandom(object){
+        let points = Math.floor(Math.random() * 100);
+        let add_subtract = Math.random() >= 0.5;
+        if(add_subtract){
+            object.grade += points;
+            if(object.grade > 100)
+                object.grade = 100;
+        }
+        else {
+            object.grade -= points;
+            if(object.grade < 0)
+                object.grade = 0;
+        }
+    }
 }
 
 class Student extends Person{
@@ -30,6 +44,7 @@ class Student extends Person{
         this.previousBackground = attrs.previousBackground;
         this.className = attrs.className;
         this.favSubjects = attrs.favSubjects;
+        this.grade = attrs.grade;
     }
     listSubjects(){
         this.favSubjects.forEach(i => {
@@ -41,6 +56,14 @@ class Student extends Person{
     }
     sprintChallenge(string){
         console.log(`${this.name} has begun sptring challenge on ${string}`);
+    }
+    graduate(){
+        if(this.grade > 70){
+            console.log(`Congrats ${this.name} you graduated with a ${this.grade}`);
+            return;
+        }
+        else
+            return false;
     }
 }
 
@@ -80,7 +103,8 @@ const nathan = new Student({
     age: 23,
     previousBackground: 'C#',
     className: 'WPT11',
-    favSubjects: ['HTML, CSS, C#']
+    favSubjects: ['HTML, CSS, C#'],
+    grade: 100
 });
 const sam = new Student({
     name: 'Sam',
@@ -88,7 +112,8 @@ const sam = new Student({
     age: 23,
     previousBackground: 'HTML',
     className: 'WPT11',
-    favSubjects: ['HTML, CSS, JS']
+    favSubjects: ['HTML, CSS, JS'],
+    grade: 50
 });
 const howard = new ProjectManager({
     name: 'howard',
@@ -110,7 +135,6 @@ const tim = new ProjectManager({
     gradClassName: 'CS2',
     favInstructor: 'Todd'
 });
-
 console.log(lucas);
 lucas.speak();
 lucas.demo('Ruby');
@@ -133,4 +157,16 @@ howard.debugsCode(nathan, 'Ruby - II');
 console.log(tim);
 tim.standUp('webpt11');
 tim.debugsCode(sam, 'JS - II');
+while(true){
+    howard.gradeRandom(nathan);
+    if(nathan.graduate()){
+        break;
+    }
+}
 
+while(true){
+    lucas.gradeRandom(sam);
+    if(sam.graduate()){
+        break;
+    }
+}
